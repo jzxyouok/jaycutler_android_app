@@ -22,8 +22,17 @@ public class SplashActivity extends ActionBarActivity {
         setContentView(R.layout.activity_splash);
 
         ImageView mSplashView = (ImageView) findViewById(R.id.splashImg);
+        /*
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.slide_left);
         mSplashView.startAnimation(animation);
+        */
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                nextActivity();
+            }
+        },3000);
     }
 
     @Override
@@ -46,5 +55,10 @@ public class SplashActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void nextActivity() {
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }
